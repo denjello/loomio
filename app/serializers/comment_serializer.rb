@@ -11,7 +11,7 @@ class CommentSerializer < ActiveModel::Serializer
   has_many :attachments, serializer: AttachmentSerializer, root: 'attachments'
 
   def body
-    auto_link_usernames_or_lists object.body, username_url_base: '#', username_include_symbol: true
+    auto_link_usernames_or_lists object.body, username_url_base: '/u/@/', username_include_symbol: true
   end
 
   def filter(keys)
@@ -19,3 +19,4 @@ class CommentSerializer < ActiveModel::Serializer
     keys
   end
 end
+

@@ -2,7 +2,7 @@ class UsersController < BaseController
   skip_before_filter :ensure_user_name_present, only: [:profile, :update]
 
   def show
-    @user = User.find_by_key!(params[:id])
+    @user = User.find_by_key(params[:id]) || User.find_by_username!(params[:slug])
     unless current_user.in_same_group_as?(@user)
       flash[:error] = t("error.cant_view_member_profile")
       redirect_to dashboard_path
@@ -58,3 +58,4 @@ class UsersController < BaseController
   def about_deactivation
   end
 end
+

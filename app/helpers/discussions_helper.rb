@@ -60,7 +60,7 @@ module DiscussionsHelper
   end
 
   def add_mention_links(comment)
-    auto_link_usernames_or_lists(comment, :username_url_base => "#", :username_include_symbol => true)
+    auto_link_usernames_or_lists(comment, :username_url_base => "/u/@/", :username_include_symbol => true)
   end
 
   def css_for_markdown_link(target, setting)
@@ -136,3 +136,4 @@ module DiscussionsHelper
     discussion.private? ? "lock" : "globe"
   end
 end
+
